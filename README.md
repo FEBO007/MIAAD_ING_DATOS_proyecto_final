@@ -592,5 +592,5 @@ Estado actual:
 ## 17. Autoras
 
 - Fátima Barrios
-- Graciela Vera
 - Claudia Coronel
+- Graciela Vera
