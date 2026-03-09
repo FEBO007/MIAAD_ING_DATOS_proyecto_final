@@ -1,0 +1,135 @@
+version: 2
+
+models:
+  # ---------- DIMS ----------
+  - name: dim_book
+    columns:
+      - name: book_key
+        tests: [not_null, unique]
+      - name: book_nk
+        tests: [not_null, unique]
+
+  - name: dim_author
+    columns:
+      - name: author_key
+        tests: [not_null, unique]
+      - name: author_name_norm
+        tests: [not_null, unique]
+
+  - name: dim_week
+    columns:
+      - name: week_key
+        tests: [not_null, unique]
+      - name: week_date
+        tests: [not_null, unique]
+
+  - name: dim_date
+    columns:
+      - name: date_key
+        tests: [not_null, unique]
+      - name: date_day
+        tests: [not_null, unique]
+
+  # ---------- BRIDGE ----------
+  - name: bridge_book_author
+    columns:
+      - name: book_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_book')
+                field: book_key
+      - name: author_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_author')
+                field: author_key
+
+  # ---------- FACTS ----------
+  - name: fct_nyt_weekly_rank
+    columns:
+      - name: week_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_week')
+                field: week_key
+      - name: book_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_book')
+                field: book_key
+
+  - name: fct_wiki_pageviews_daily
+    columns:
+      - name: author_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_author')
+                field: author_key
+      - name: date_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+
+  - name: fct_google_books_snapshot
+    columns:
+      - name: book_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_book')
+                field: book_key
+      - name: snapshot_date_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+
+  - name: fct_wiki_author_views_7d_weekly
+    columns:
+      - name: author_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_author')
+                field: author_key
+      - name: week_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_week')
+                field: week_key
+
+  - name: fct_wiki_book_views_7d_weekly
+    columns:
+      - name: book_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_book')
+                field: book_key
+      - name: week_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_week')
+                field: week_key

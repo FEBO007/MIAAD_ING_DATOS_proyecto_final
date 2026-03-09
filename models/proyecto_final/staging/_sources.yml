@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: raw
+    database: airbyte_curso
+    schema: main
+    tables:
+      - name: nyt_hardcover_fiction_by_date
+      - name: google_books_by_nyt
+      - name: google_books_by_isbn
+      - name: wiki_pageviews_by_article

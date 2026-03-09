@@ -1,0 +1,30 @@
+.env
+*.env
+
+evidencias/
+models/tareas_asincronas
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# dbt
+target/
+target_final/
+target_individual/
+dbt_packages/
+logs/
+
+# Prefect / entornos locales
+prefect_flows/prefect-env/
+prefect_flows/.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/

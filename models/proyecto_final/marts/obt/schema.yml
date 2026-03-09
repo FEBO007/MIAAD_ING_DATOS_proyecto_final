@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: obt_fiction_weekly_scorecard
+    tests:
+      - dbt_expectations.expect_compound_columns_to_be_unique:
+          arguments:
+            column_list: ["published_date", "rank"]
+
+      - dbt_expectations.expect_table_row_count_to_be_between:
+          arguments:
+            min_value: 15
+            max_value: 3000
+
+    columns:
+      - name: published_date
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: views_7d
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              arguments:
+                min_value: 0
