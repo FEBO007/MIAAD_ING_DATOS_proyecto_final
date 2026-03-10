@@ -324,7 +324,7 @@ published_date
 - nuevos ingresos
 - métricas de views 7d
 
-## 11. Estructura sugerida del repositorio
+## 11. Estructura del repositorio
 
 ```text
 .
@@ -367,9 +367,6 @@ DBT_PROFILES_DIR=/home/mti2_ubuntu/.dbt
 DBT_TARGET=final
 DBT_SELECT=path:models/proyecto_final
 ```
-
-> **Importante:** no subir secretos reales al repositorio.  
-> Se recomienda incluir un archivo `prefect_flows/.env.example`.
 
 ## 13. Instrucciones de ejecución reproducibles
 
@@ -557,31 +554,8 @@ print("FLOW_OK")
 PY
 ```
 
-## 15. Buenas prácticas para GitHub
+## 15. Estado del proyecto
 
-No versionar:
-- `.env`
-- credenciales
-- tokens
-- archivos temporales de `target/`
-- logs locales
-- entornos virtuales
-
-Agregar al `.gitignore`:
-
-```gitignore
-target/
-logs/
-dbt_packages/
-.env
-*.pyc
-__pycache__/
-prefect_flows/prefect-env/
-```
-
-## 16. Estado del proyecto
-
-Estado actual:
 - arquitectura implementada
 - ingesta en Airbyte operativa
 - modelo dbt construido
@@ -589,7 +563,7 @@ Estado actual:
 - orquestación semanal implementada
 - dashboard final en Metabase disponible
 
-## 17. Autoras
+## 16. Autoras
 
 - Fátima Barrios
 - Claudia Coronel

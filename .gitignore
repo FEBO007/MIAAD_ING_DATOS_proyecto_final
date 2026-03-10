@@ -28,3 +28,6 @@ prefect_flows/.env
 .DS_Store
 Thumbs.db
 .vscode/
+
+*Zone.Identifier
+*.Identifier
